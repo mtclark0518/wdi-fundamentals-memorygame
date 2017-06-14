@@ -24,14 +24,23 @@ var cards = [
 ];
 
 var cardsInPlay = [];
+var score = 0;
+
+var updateScore = function() {
+	var scoreboard = document.getElementById('scoreboard');
+	score += 1
+	scoreboard.innerHTML = 'Your Score: ' + score;
+};
 
 var checkForMatch = function() {
 	if(cardsInPlay.length === 2) {
 		if (cardsInPlay[0] === cardsInPlay[1]) {
 			alert("You found a match");
+			updateScore();
 			} else {
 			alert("Sorry, try again.");
-			};
+			createBoard();
+		};
 	};
 };
 
@@ -45,6 +54,8 @@ var flipCard = function() {
 var createBoard = function() {
 	var gameBoard = document.getElementById('game-board');
 	gameBoard.innerHTML = '';
+	cardsInPlay = [];
+	cardsInPlay.innerHTML = [];
 	for(var i = 0; i < cards.length; i++) {
 		var cardElement = document.createElement('img');
 		cardElement.setAttribute('src', '../wdi-fundamentals-memorygame/images/back.png');
