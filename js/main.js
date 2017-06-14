@@ -55,7 +55,6 @@ var createBoard = function() {
 	var gameBoard = document.getElementById('game-board');
 	gameBoard.innerHTML = '';
 	cardsInPlay = [];
-	cardsInPlay.innerHTML = [];
 	for(var i = 0; i < cards.length; i++) {
 		var cardElement = document.createElement('img');
 		cardElement.setAttribute('src', '../wdi-fundamentals-memorygame/images/back.png');
