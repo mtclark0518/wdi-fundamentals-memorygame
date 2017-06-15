@@ -119,3 +119,10 @@ footer {
 	border: 5px dashed black;
 }
 
+.selected {
+	border: 5px solid blue;
+}
+
+.matched {
+	border: 5px solid red;
+}

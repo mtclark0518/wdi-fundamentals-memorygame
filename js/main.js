@@ -30,7 +30,7 @@ var scoreboard = document.getElementById('scoreboard');
 
 var clearScore = function() {
 	score = 0;
-	scoreboard.innerHTML = 'Your Score ' + score;
+	scoreboard.innerHTML = 'Your Score: ' + score;
 };
 var updateScore = function() {
 	score += 1
@@ -56,6 +56,7 @@ var checkForMatch = function() {
 
 var flipCard = function() {
 	var cardId = this.getAttribute('data-id');
+	this.className = 'selected';
 	cardsInPlay.push(cards[cardId].rank);
 	this.setAttribute('src', cards[cardId].cardImage);
 	checkForMatch();		
