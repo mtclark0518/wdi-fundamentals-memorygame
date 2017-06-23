@@ -1,6 +1,6 @@
 body {
 	text-align: center;
-	margin: 0;
+	margin: 0 auto;
 }
 
 h1 {
@@ -11,7 +11,9 @@ h1 {
 	font-size: 45px;
 	margin: 0;
 }
-
+.nav {
+	display: inline-block;
+}
 a {
 	font-family: raleway;
 	color: #f15b31;
@@ -53,7 +55,7 @@ nav {
 }
 
 main {
-	width: 850px;
+	width: 720px;
 	margin: 35px auto;
 }
 
@@ -74,18 +76,15 @@ footer {
 .copyright {
 	float: left;
 	background: rgba(11, 43, 64, 1.0);
-
 }
 
 .message {
 	float: right;
-
 }
 
 .social {
 	margin: 0;
 	padding: 0;
-
 }
 
 .social a {
@@ -137,7 +136,6 @@ display: inline-block;
 height: 100%;
 width: 20%;
 margin: 0 1.25%;
-
 transform-style: preserve-3d;
 transition: transform 1s;
 }
@@ -165,10 +163,33 @@ transition: transform 1s;
 
 @media (max-width: 720px) {
 	nav {
-		background: red;
+		background: grey;
+		padding: 10px;
+	}
+	.nav {
+		display: block;
+		margin: 5px 0;
 	}
 	a {
-		display: block;
+		display: inline-block;
 		font-size: 15px;
+	}
+	h1 {
+		font-size: 24px;
+	}
+	main {
+		width:450px;
+
+	}
+
+	#game-board {
+		height: 200px;
+	}
+	#scoreboard {
+		margin-bottom: 10px;
+		padding: 5px;
+	}
+	footer {
+
 	}
 }
