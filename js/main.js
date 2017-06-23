@@ -1,5 +1,4 @@
 //Arrays
-
 var cards = [
 	{
 		rank: "queen",

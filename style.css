@@ -57,8 +57,6 @@ main {
 	margin: 35px auto;
 }
 
-
-
 footer {
 	text-transform: uppercase;
 	padding: 0 20px;
@@ -162,3 +160,15 @@ transition: transform 1s;
 }
 
 
+/*******media queries******/
+
+
+@media (max-width: 720px) {
+	nav {
+		background: red;
+	}
+	a {
+		display: block;
+		font-size: 15px;
+	}
+}
