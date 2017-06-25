@@ -24,14 +24,47 @@ var cards = [
 
 var cardsInPlay = [];
 var correctMatches = [];
+//var shuffledID = [];
 
 //Variables
 var score = 0;
 var scoreboard = document.getElementById('scoreboard');
 var reset = document.getElementById('reset');
+var gameBoard = document.getElementById('game-board');
 
 
 //Functions
+var shuffleDeck =function (){
+    var max = cards.length;
+    var shuffledID = [];
+    for(var i = 0;i<max ; i++){
+    	var cardDiv = document.createElement('div');
+    	cardDiv.setAttribute('id', 'card');
+        var randCard = Math.floor(Math.random()*max);
+        if(shuffledID.indexOf(randCard) === -1){
+            shuffledID.push(randCard);
+            cardDiv.setAttribute('data-id', randCard);
+            cardDiv.addEventListener('click', flipCard);
+            gameBoard.appendChild(cardDiv);
+	    //create visible backside of card
+			var cardBack = document.createElement('img');
+			cardBack.setAttribute('src', '../wdi-fundamentals-memorygame/images/back.png');
+			cardBack.className = 'front';
+			cardDiv.appendChild(cardBack);
+	
+		//create invisible frontside of card
+			var cardFront = document.createElement('img');
+			var whichCard = cardDiv.getAttribute('data-id');
+			cardFront.setAttribute('src', cards[whichCard].cardImage);
+			cardFront.className = 'back';
+			cardDiv.appendChild(cardFront);
+	
+        }
+        else
+            i--;
+    }
+    console.log(shuffledID);
+};
 var clearScore = function() {
 	score = 0;
 	scoreboard.innerHTML = 'Your Score: ' + score;
@@ -70,33 +103,10 @@ var flipCard = function() {
 };
 
 var createBoard = function() {
-	var gameBoard = document.getElementById('game-board');
 	gameBoard.innerHTML = '';
 	cardsInPlay = [];
 	clearScore();
-	for(var i = 0; i < cards.length; i++) {
-	
-	//new method for rendering board to include 3d card flip	
-	//create div that will hold each card
-	var cardDiv = document.createElement('div');
-	cardDiv.setAttribute('data-id', i);
-	cardDiv.setAttribute('id', 'card');
-	cardDiv.addEventListener('click', flipCard);
-	gameBoard.appendChild(cardDiv);
-	
-	//create visible backside of card
-	var cardBack = document.createElement('img');
-	cardBack.setAttribute('src', '../wdi-fundamentals-memorygame/images/back.png');
-	cardBack.className = 'front';
-	cardDiv.appendChild(cardBack);
-	
-	//create invisible frontside of card
-	var cardFront = document.createElement('img');
-	var whichCard = cardDiv.getAttribute('data-id');
-	cardFront.setAttribute('src', cards[whichCard].cardImage);
-	cardFront.className = 'back';
-	cardDiv.appendChild(cardFront);
-	}
+	shuffleDeck();
 };
 
 var init = function() {
@@ -109,4 +119,9 @@ reset.addEventListener('click', createBoard);
 createBoard();
 
 window.addEventListener('DOMContentLoaded', init, false);
+
+
+
+//shuffle deck
+
 
